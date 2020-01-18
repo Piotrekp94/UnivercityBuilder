@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3920125535168135531}
   - component: {fileID: 3920125535167365451}
   - component: {fileID: 3920125535166366603}
+  - component: {fileID: 7965692530600984634}
   m_Layer: 0
   m_Name: geo_buildings_repair
   m_TagString: Untagged
@@ -65,6 +66,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -77,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7965692530600984634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920125535168306507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.101704, y: 7.825974, z: 10.000563}
+  m_Center: {x: -0.0000023841858, y: 3.912987, z: 0.00000023841858}

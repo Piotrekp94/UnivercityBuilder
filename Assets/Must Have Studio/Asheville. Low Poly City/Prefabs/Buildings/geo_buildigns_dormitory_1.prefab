@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8066895353568210801}
   - component: {fileID: 8066895353566916435}
   - component: {fileID: 8066895353565916563}
+  - component: {fileID: 5851472556930645652}
   m_Layer: 0
   m_Name: geo_buildigns_dormitory_1
   m_TagString: Untagged
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5851472556930645652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066895353567851345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20.8008, y: 19.825748, z: 20.003052}
+  m_Center: {x: 0, y: 9.912874, z: 0.0000023841858}

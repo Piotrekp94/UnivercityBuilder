@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7187747431403037028}
   - component: {fileID: 7187747431406461252}
   - component: {fileID: 7187747431405331332}
+  - component: {fileID: 4265892430790229341}
   m_Layer: 0
   m_Name: geo_buildings_office
   m_TagString: Untagged
@@ -65,6 +66,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -77,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4265892430790229341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187747431403404612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.414219, y: 9.403181, z: 19.977695}
+  m_Center: {x: 0, y: 4.7015905, z: 0.00000047683716}

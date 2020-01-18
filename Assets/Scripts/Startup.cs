@@ -14,6 +14,7 @@ public class Startup : MonoBehaviour
     public GameObject bigBuilding;
     public GameObject smallBuilding;
     public GameObject empty;
+    public GameObject univercityCenter;
 
 
     public MyObject[,] array;
@@ -22,6 +23,9 @@ public class Startup : MonoBehaviour
 
     public int distanceBetweenXRoads = 30;
     public int distanceBetweenYRoads = 30;
+    public int univercityStartingPointX = 30;
+    public int univercityStartingPointY = 30;
+    public int univercityStartingSize = 10;
     // called first
 
     void OnEnable()
@@ -55,9 +59,37 @@ public class Startup : MonoBehaviour
     private void prepareMap(ref MyObject[,] array)
     {
         addCorners(ref array);
+        addUnivercityTerritory(ref array);
         addCornerRoads(ref array);
         fillRest(ref array);
     }
+
+    private void addUnivercityTerritory(ref MyObject[,] array)
+    {
+        int univercityPosX = univercityStartingPointX + univercityStartingSize / 2;
+        int univercityPosY = univercityStartingPointY + univercityStartingSize / 2;
+        if (array[univercityPosX, univercityPosY] == null)
+        {
+            array[univercityPosX, univercityPosY] = new MyObject(univercityCenter);
+        }
+        else
+        {
+            array[univercityPosX+1, univercityPosY+1] = new MyObject(univercityCenter);
+
+        }
+        for (int i = 1; i < mapSizeX - 1; i++)
+        {
+            for (int j = 1; j < mapSizeY - 1; j++)
+            
+                if (array[i, j] == null)
+                {
+                    if ((i < univercityStartingPointX + univercityStartingSize && i > univercityStartingPointX) && (j < univercityStartingPointY + univercityStartingSize && j > univercityStartingPointY))
+                    {
+                        array[i, j] = new MyObject(empty);
+                    }
+                }
+            }
+        }
 
     private void fillRest(ref MyObject[,] array)
     {
@@ -69,7 +101,8 @@ public class Startup : MonoBehaviour
             {
                if(array[i,j] == null)
                {
-                    if (random.Next(0, 2) == 0)
+                    
+                    if (random.Next(0, 2) == 0 || (i < univercityStartingPointX + univercityStartingSize && i > univercityStartingPointX) && (j < univercityStartingPointX + univercityStartingSize && j > univercityStartingPointX) )
                     {
                         array[i, j] = new MyObject(empty); ;
                     }
