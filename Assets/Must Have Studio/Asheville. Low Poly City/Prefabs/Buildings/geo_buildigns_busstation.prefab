@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8663677134931980099}
   - component: {fileID: 8663677134935371619}
   - component: {fileID: 8663677134934273443}
+  - component: {fileID: -3364979075651926892}
   m_Layer: 0
   m_Name: geo_buildigns_busstation
   m_TagString: Untagged
@@ -65,6 +66,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -77,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-3364979075651926892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663677134932079459}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.708908, y: 9.302798, z: 21.21559}
+  m_Center: {x: -0.0000009536743, y: 4.651399, z: 0}

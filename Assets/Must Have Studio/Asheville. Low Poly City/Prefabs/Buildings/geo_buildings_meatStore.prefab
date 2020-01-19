@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8847586629044913111}
   - component: {fileID: 8847586629041488887}
   - component: {fileID: 8847586629042487607}
+  - component: {fileID: -7332324699478718768}
   m_Layer: 0
   m_Name: geo_buildings_meatStore
   m_TagString: Untagged
@@ -65,6 +66,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -77,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-7332324699478718768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847586629044428791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.479771, y: 6.530342, z: 10.239883}
+  m_Center: {x: 0.0000026226044, y: 3.265171, z: 0.00000023841858}

@@ -31,9 +31,7 @@ public class Startup : MonoBehaviour
     void OnEnable()
     {
         HashSet<MyObject> set = new HashSet<MyObject>();
-        var a = new MyObject(widerBuilding, 1, 2);
-        var b = new MyObject(widerBuilding, 1, 2);
-        var c = new MyObject(bigBuilding, 2, 2);
+
         array = new MyObject[mapSizeX, mapSizeY];
         prepareMap(ref array);
         for(int i = 0; i < mapSizeX; i++)
@@ -43,10 +41,10 @@ public class Startup : MonoBehaviour
                 MyObject m = array[i, j];
                 if (m != null)
                 {
-
                     if (!set.Contains(m))
                     {
-                        Instantiate(m.gameObject, new Vector3(i * 10 + 5 * m.xsize, 0, j * 10 + 5 * m.ysize), Quaternion.Euler(0, m.rotation, 0));
+                        GameObject g = Instantiate(m.gameObject, new Vector3(i * 10 + 5 * m.xsize, 0, j * 10 + 5 * m.ysize), Quaternion.Euler(0, m.rotation, 0));
+                        g.name = g.name +"x"+ i.ToString() + "y"+j.ToString();
                         set.Add(m);
                     }
                 }
@@ -61,7 +59,32 @@ public class Startup : MonoBehaviour
         addCorners(ref array);
         addUnivercityTerritory(ref array);
         addCornerRoads(ref array);
+        addSideRoads(ref array);
         fillRest(ref array);
+        //makeCrossroads(ref array);
+    }
+
+
+    private bool isRoad(ref MyObject myObject)
+    {
+        return myObject.gameObject.name.StartsWith("road") || myObject.gameObject.name.StartsWith("crossroad");
+    }
+    private void addSideRoads(ref MyObject[,] array)
+    {
+        for (int y = distanceBetweenXRoads; y < mapSizeY - 1; y += distanceBetweenXRoads)
+        {
+            for (int i = 1; i < mapSizeX - 1; i++)
+            {
+                array[i, y] = new MyObject(road);
+            }
+        }
+        for (int x = distanceBetweenYRoads; x < mapSizeX - 1; x += distanceBetweenYRoads)
+        {
+            for (int i = 1; i < mapSizeY - 1; i++)
+            {
+                array[x, i] = new MyObject(road, 1, 1, 90);
+            }
+        }
     }
 
     private void addUnivercityTerritory(ref MyObject[,] array)
@@ -175,30 +198,14 @@ public class Startup : MonoBehaviour
         {
             array[mapSizeX-1, i] = new MyObject(road,1,1,90);
         }
-        for(int y = distanceBetweenXRoads; y < mapSizeY -1; y+= distanceBetweenXRoads)
-        {
-            for (int i = 1; i < mapSizeX -1 ; i++)
-            {
-                array[i, y] = new MyObject(road);
-            }
-        }
-        for (int x = distanceBetweenYRoads; x < mapSizeX - 1; x += distanceBetweenYRoads)
-        {
-            for (int i = 1; i < mapSizeY - 1; i++)
-            {
-                array[x, i] = new MyObject(road, 1, 1, 90);
-            }
-
-
-        }
     }
 
     private void addCorners(ref MyObject[,] array)
     {
+        array[0, 0] = new MyObject(crossroad);
         array[0, mapSizeY-1] = new MyObject(crossroad);
         array[mapSizeX-1, 0] = new MyObject(crossroad);
-        array[mapSizeX-1, mapSizeY-1] = new MyObject(crossroad);
-
+        array[mapSizeX - 1, mapSizeY - 1] = new MyObject(crossroad);
     }
 
     // Update is called once per frame
