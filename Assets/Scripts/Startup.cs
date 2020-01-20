@@ -18,8 +18,10 @@ public class Startup : MonoBehaviour
 
 
     public MyObject[,] array;
-    public int mapSizeX = 30;
-    public int mapSizeY = 10;
+
+    
+    public  int mapSizeX = 30;
+    public  int mapSizeY = 10;
 
     public int distanceBetweenXRoads = 30;
     public int distanceBetweenYRoads = 30;
@@ -30,6 +32,7 @@ public class Startup : MonoBehaviour
 
     void OnEnable()
     {
+        GameObject[,] gameObjects = new GameObject[mapSizeX, mapSizeY];
         HashSet<MyObject> set = new HashSet<MyObject>();
 
         array = new MyObject[mapSizeX, mapSizeY];
@@ -44,14 +47,29 @@ public class Startup : MonoBehaviour
                     if (!set.Contains(m))
                     {
                         GameObject g = Instantiate(m.gameObject, new Vector3(i * 10 + 5 * m.xsize, 0, j * 10 + 5 * m.ysize), Quaternion.Euler(0, m.rotation, 0));
-                        g.name = g.name +"x"+ i.ToString() + "y"+j.ToString();
+
+                        g.GetComponent<SizeScript>().x = i;
+                        g.GetComponent<SizeScript>().y = j;
+                        fillMap(ref gameObjects, i, j, ref g);
+                        g.name = g.name + "x" + i.ToString() + "y" + j.ToString();
                         set.Add(m);
                     }
                 }
-                
             }
         }
+        MapToObjects.mapOfObjects = gameObjects;
+        Debug.Log("StartupDone");
+    }
 
+    private void fillMap(ref GameObject[,] gameObjects, int i, int j, ref GameObject g)
+    {
+        for(int x = 0; x <g.GetComponent<SizeScript>().sizeX; x++)
+        {
+            for (int y = 0; y < g.GetComponent<SizeScript>().sizeY; y++)
+            {
+                gameObjects[i + x, j + y] = g;
+            }
+        }
     }
 
     private void prepareMap(ref MyObject[,] array)

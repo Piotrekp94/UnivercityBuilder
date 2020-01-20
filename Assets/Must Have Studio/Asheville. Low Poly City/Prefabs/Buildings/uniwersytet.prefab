@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 585203868389280235}
   - component: {fileID: 585203868390279979}
   - component: {fileID: -3008648165781785955}
+  - component: {fileID: -6241865921382832202}
   m_Layer: 0
-  m_Name: geo_buildings_bank
+  m_Name: uniwersytet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,3 +93,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 12.508499, z: 10.532503}
   m_Center: {x: 0, y: 6.2542496, z: -0.00000071525574}
+--- !u!114 &-6241865921382832202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585203868392281579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9955525faf52841a74c0b5639b87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 1
+  sizeY: 1

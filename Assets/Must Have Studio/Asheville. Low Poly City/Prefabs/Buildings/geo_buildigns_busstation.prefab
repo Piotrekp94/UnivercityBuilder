@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8663677134935371619}
   - component: {fileID: 8663677134934273443}
   - component: {fileID: -3364979075651926892}
+  - component: {fileID: -871943273736617399}
   m_Layer: 0
   m_Name: geo_buildigns_busstation
   m_TagString: Untagged
@@ -92,3 +93,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 30.708908, y: 9.302798, z: 21.21559}
   m_Center: {x: -0.0000009536743, y: 4.651399, z: 0}
+--- !u!114 &-871943273736617399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663677134932079459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9955525faf52841a74c0b5639b87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 1
+  sizeY: 1
+  x: 0
+  y: 0

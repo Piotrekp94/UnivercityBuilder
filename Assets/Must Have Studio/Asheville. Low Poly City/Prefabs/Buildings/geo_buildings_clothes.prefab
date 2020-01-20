@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6678025967686688265}
   - component: {fileID: 6678025967687818441}
   - component: {fileID: 7299711453277380596}
+  - component: {fileID: 1533877719094909280}
   m_Layer: 0
   m_Name: geo_buildings_clothes
   m_TagString: Untagged
@@ -92,3 +93,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.698872, y: 6.282017, z: 10.349433}
   m_Center: {x: -0.0000023841858, y: 3.1410086, z: 0}
+--- !u!114 &1533877719094909280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6678025967690007049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9955525faf52841a74c0b5639b87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 1
+  sizeY: 1
+  x: 0
+  y: 0

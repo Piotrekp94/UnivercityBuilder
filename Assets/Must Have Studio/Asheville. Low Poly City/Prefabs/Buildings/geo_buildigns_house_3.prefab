@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6335823511933486379}
   - component: {fileID: 6335823511932389355}
   - component: {fileID: 6946580653894500163}
+  - component: {fileID: 7001487116210506967}
   m_Layer: 0
   m_Name: geo_buildigns_house_3
   m_TagString: Untagged
@@ -92,3 +93,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.552148, y: 11.379117, z: 10.285349}
   m_Center: {x: 0, y: 5.6895585, z: 0}
+--- !u!114 &7001487116210506967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335823511934654763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9955525faf52841a74c0b5639b87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 1
+  sizeY: 1
+  x: 0
+  y: 0

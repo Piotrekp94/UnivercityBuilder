@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3192495267280372633}
   - component: {fileID: 3192495267279372633}
   - component: {fileID: 3829551871722763219}
+  - component: {fileID: 7021285554670079620}
   m_Layer: 0
   m_Name: geo_buildings_cafe
   m_TagString: Untagged
@@ -92,3 +93,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.008141, y: 7.140191, z: 20.000002}
   m_Center: {x: -0.00000047683716, y: 3.5700955, z: 0}
+--- !u!114 &7021285554670079620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192495267281575833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9955525faf52841a74c0b5639b87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 2
+  sizeY: 1

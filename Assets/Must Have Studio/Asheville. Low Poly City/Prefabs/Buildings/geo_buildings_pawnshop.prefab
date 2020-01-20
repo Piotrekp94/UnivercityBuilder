@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8190486236769572653}
   - component: {fileID: 8190486236770670061}
   - component: {fileID: -3001735068624912315}
+  - component: {fileID: -8497500903490557329}
   m_Layer: 0
   m_Name: geo_buildings_pawnshop
   m_TagString: Untagged
@@ -92,3 +93,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.654687, y: 5.938859, z: 10.324097}
   m_Center: {x: 0, y: 2.9694295, z: 0}
+--- !u!114 &-8497500903490557329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8190486236768733997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9955525faf52841a74c0b5639b87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 1
+  sizeY: 1
+  x: 0
+  y: 0
