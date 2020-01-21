@@ -11,7 +11,7 @@ public class BuilderScript : MonoBehaviour
 
     // Update is called once per frame
 
-    public static void setBuildingObject(GameObject go)
+    public void setBuildingObject(GameObject go)
     {
         buildingObject = go;
         isBuildingMode = true;

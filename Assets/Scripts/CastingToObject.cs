@@ -6,28 +6,49 @@ using UnityEngine.EventSystems;
 public class CastingToObject : MonoBehaviour
 {
     public static string so;
-    private GameObject selectedObject;
+    private GameObject selectedObject; 
     public int red;
     public int green;
     public int blue;
     public int range = 1000;
     public int interfaceHeight = 200;
+
+    private int currentX;
+    private int currentY;
     Color color;
     // Update is called once per frame
     void Update()
     {
         if (BuilderScript.isBuildingMode)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, range))
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                GameObject selectedObject = GameObject.Find(CastingToObject.so);
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, range))
+                {
+                    var mapToObject = FindObjectOfType<MapToObjects>();
+                    GameObject selectedObject = GameObject.Find(hit.transform.gameObject.name);
+                    if (currentX != selectedObject.GetComponent<SizeScript>().x || currentY != selectedObject.GetComponent<SizeScript>().y)
+                    {
+                        currentX = selectedObject.GetComponent<SizeScript>().x;
+                        currentY = selectedObject.GetComponent<SizeScript>().y;
+                        mapToObject.paintTempObject(currentX, currentY, BuilderScript.buildingObject);
+                    }
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if(mapToObject.isGreen)
+                        {
+                            BuilderScript.isBuildingMode = false;
+                            mapToObject.constructPaintedObject(currentX, currentY, BuilderScript.buildingObject);
 
-                FindObjectOfType<MapToObjects>().paintTempObject(selectedObject.GetComponent<SizeScript>().x, selectedObject.GetComponent<SizeScript>().y, BuilderScript.buildingObject);
+                        }
+                    }
+                }
             }
 
         }
+        else
         if (Input.GetMouseButtonDown(0))
         {
             clearSelected();

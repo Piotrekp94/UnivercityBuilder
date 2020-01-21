@@ -8,6 +8,8 @@ public class MapToObjects : MonoBehaviour
     public GameObject blank;
     public static GameObject[,] mapOfObjects = new GameObject[120,90];
     private GameObject tempObject;
+    public bool isGreen = false;
+    private GameObject prefab;
 
     public void killObject(int x, int y)
     {
@@ -25,8 +27,9 @@ public class MapToObjects : MonoBehaviour
             }
         }
     }
-    public void paintTempObject(int x, int y, GameObject prefab)
+    public void paintTempObject(int x, int y, GameObject p)
     {
+        this.prefab = p;
         if(tempObject != null)
         {
             Destroy(tempObject);
@@ -38,12 +41,39 @@ public class MapToObjects : MonoBehaviour
         {
             tempObject = Instantiate(prefab, new Vector3(x * 10 + 5 * 1, 0, y * 10 + 5 * 1), Quaternion.Euler(0, 0, 0));
             tempObject.GetComponent<Renderer>().material.color = new Color32((byte)255, (byte)0, (byte)0, 255);
+            tempObject.GetComponent<SizeScript>().x = x;
+            tempObject.GetComponent<SizeScript>().y = y;
+            tempObject.name = tempObject.name + "x" + x.ToString() + "y" + y.ToString();
+            isGreen = false;
+
         }
         else
         {
             tempObject = Instantiate(prefab, new Vector3(x * 10 + 5 * 1, 0, y * 10 + 5 * 1), Quaternion.Euler(0, 0, 0));
             tempObject.GetComponent<Renderer>().material.color = new Color32((byte)0, (byte)255, (byte)0, 255);
+            tempObject.GetComponent<SizeScript>().x = x;
+            tempObject.GetComponent<SizeScript>().y = y;
+            tempObject.name = tempObject.name + "x" + x.ToString() + "y" + y.ToString();
+            isGreen = true;
         }
+    }
+
+    internal void constructPaintedObject(int currentX, int currentY, GameObject buildingObject)
+    {
+        isGreen = false;
+        if (tempObject != null)
+        {
+            Destroy(tempObject);
+        }
+        Destroy(mapOfObjects[currentX, currentY]);
+        var newObject = Instantiate(prefab, new Vector3(currentX * 10 + 5 * 1, 0, currentY * 10 + 5 * 1), Quaternion.Euler(0, 0, 0));
+        newObject.GetComponent<SizeScript>().x = currentX;
+        newObject.GetComponent<SizeScript>().y = currentY;
+        newObject.name = newObject.name + "x" + currentX.ToString() + "y" + currentY.ToString();
+        mapOfObjects[currentX, currentY] = newObject;
+        prefab = null;
+
+
     }
 
     private bool isPlaceTaken(int x, int y, GameObject prefab)
