@@ -10,4 +10,5 @@ public class SizeScript : MonoBehaviour
 
     public int x;
     public int y;
+    public bool isOwned = false;
 }

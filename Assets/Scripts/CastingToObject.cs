@@ -15,6 +15,7 @@ public class CastingToObject : MonoBehaviour
 
     private int currentX;
     private int currentY;
+    private int rotation = 0;
     Color color;
     // Update is called once per frame
     void Update()
