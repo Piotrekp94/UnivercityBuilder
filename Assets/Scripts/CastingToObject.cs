@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class CastingToObject : MonoBehaviour
 {
     public static string so;
-    private GameObject selectedObject; 
+    private GameObject selectedObject;
     public int red;
     public int green;
     public int blue;
@@ -37,7 +37,7 @@ public class CastingToObject : MonoBehaviour
                     }
                     if (Input.GetMouseButtonDown(0))
                     {
-                        if(mapToObject.isGreen)
+                        if (mapToObject.isGreen)
                         {
                             BuilderScript.isBuildingMode = false;
                             mapToObject.constructPaintedObject(currentX, currentY, BuilderScript.buildingObject);
