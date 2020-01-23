@@ -28,7 +28,7 @@ public class MapToObjects : MonoBehaviour
             }
         }
     }
-    public void paintTempObject(int x, int y, GameObject p)
+    public void paintTempObject(int x, int y, GameObject p, int rotation)
     {
         this.prefab = p;
         if(tempObject != null)
@@ -40,14 +40,14 @@ public class MapToObjects : MonoBehaviour
         int sizeY = prefab.GetComponent<SizeScript>().sizeY;
         if (isPlaceTaken(x,y, prefab))
         {
-            tempObject = createObject(prefab, x, y, sizeX, sizeY, 0);
+            tempObject = createObject(prefab, x, y, sizeX, sizeY, rotation);
             tempObject.GetComponent<Renderer>().material.color = new Color32((byte)255, (byte)0, (byte)0, 255);
             isGreen = false;
 
         }
         else
         { 
-            tempObject = createObject(prefab, x, y, sizeX, sizeY, 0);
+            tempObject = createObject(prefab, x, y, sizeX, sizeY, rotation);
             tempObject.GetComponent<Renderer>().material.color = new Color32((byte)0, (byte)255, (byte)0, 255);
             isGreen = true;
         }
@@ -62,7 +62,7 @@ public class MapToObjects : MonoBehaviour
         return constructedObject;
     }
 
-    internal void constructPaintedObject(int currentX, int currentY, GameObject buildingObject)
+    internal void constructPaintedObject(int currentX, int currentY, GameObject buildingObject, int rotation)
     {
         isGreen = false;
         if (tempObject != null)
@@ -70,10 +70,7 @@ public class MapToObjects : MonoBehaviour
             Destroy(tempObject);
         }
         Destroy(mapOfObjects[currentX, currentY]);
-        var newObject = Instantiate(prefab, new Vector3(currentX * 10 + 5 * 1, 0, currentY * 10 + 5 * 1), Quaternion.Euler(0, 0, 0));
-        newObject.GetComponent<SizeScript>().x = currentX;
-        newObject.GetComponent<SizeScript>().y = currentY;
-        newObject.name = newObject.name + "x" + currentX.ToString() + "y" + currentY.ToString();
+        var newObject = createObject(prefab, currentX, currentY, 1, 1, rotation);
         mapOfObjects[currentX, currentY] = newObject;
         prefab = null;
 

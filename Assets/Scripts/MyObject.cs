@@ -20,6 +20,12 @@ public class MyObject
     {
         this.gameObject = pole;
     }
+    public MyObject(GameObject pole,int rotation)
+    {
+        this.gameObject = pole;
+        this.rotation = rotation;
+
+    }
     public MyObject(GameObject pole, int xsize, int ysize, int rotation)
     {
         this.gameObject = pole;

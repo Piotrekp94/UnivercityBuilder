@@ -15,63 +15,59 @@ public class CastingToObject : MonoBehaviour
 
     private int currentX;
     private int currentY;
+
     private int rotation = 0;
+    private int oldRotation = 0;
     Color color;
     // Update is called once per frame
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            rotation += 90;
+        }
         if (BuilderScript.isBuildingMode)
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, range))
-                {
-                    var mapToObject = FindObjectOfType<MapToObjects>();
-                    GameObject selectedObject = GameObject.Find(hit.transform.gameObject.name);
-                    if (currentX != selectedObject.GetComponent<SizeScript>().x || currentY != selectedObject.GetComponent<SizeScript>().y)
-                    {
-                        currentX = selectedObject.GetComponent<SizeScript>().x;
-                        currentY = selectedObject.GetComponent<SizeScript>().y;
-                        mapToObject.paintTempObject(currentX, currentY, BuilderScript.buildingObject);
-                    }
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        if (mapToObject.isGreen)
-                        {
-                            BuilderScript.isBuildingMode = false;
-                            mapToObject.constructPaintedObject(currentX, currentY, BuilderScript.buildingObject);
 
-                        }
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, range))
+            {
+                var mapToObject = FindObjectOfType<MapToObjects>();
+                GameObject selectedObject = GameObject.Find(hit.transform.gameObject.name);
+                if (currentX != selectedObject.GetComponent<SizeScript>().x || currentY != selectedObject.GetComponent<SizeScript>().y || rotation != oldRotation)
+                {
+                    currentX = selectedObject.GetComponent<SizeScript>().x;
+                    currentY = selectedObject.GetComponent<SizeScript>().y;
+                    mapToObject.paintTempObject(currentX, currentY, BuilderScript.buildingObject, rotation);
+                    oldRotation = rotation;
+                }
+                
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (mapToObject.isGreen)
+                    {
+                        BuilderScript.isBuildingMode = false;
+                        mapToObject.constructPaintedObject(currentX, currentY, BuilderScript.buildingObject, rotation);
+                        rotation = 0;
                     }
                 }
             }
-
         }
-        else
-        if (Input.GetMouseButtonDown(0))
+        else if (Input.GetMouseButtonDown(0))
         {
             clearSelected();
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (!EventSystem.current.IsPointerOverGameObject())
+
+            if (Physics.Raycast(ray, out hit, range))
             {
-                BuilderScript.isBuildingMode = false;
-
-                if (Physics.Raycast(ray, out hit, range))
-                {
-                    if (BuilderScript.isBuildingMode)
-                    {
-
-                    }
-                    else
-                    {
-                        markClickedObject(ref hit);
-                    }
-
-                }
+                markClickedObject(ref hit);
             }
         }
     }

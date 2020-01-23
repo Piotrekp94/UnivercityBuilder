@@ -15,16 +15,6 @@ public class Startup : MonoBehaviour
     public GameObject bigBuilding2;
     public GameObject empty;
     public GameObject univercityCenter;
-    public GameObject buildinga;
-    public GameObject buildingb;
-    public GameObject buildingc;
-    public GameObject buildingd;
-    public GameObject buildinge;
-    public GameObject buildingf;
-    public GameObject buildingg;
-    public GameObject buildingh;
-    public GameObject buildingi;
-
 
     public MyObject[,] array;
 
@@ -39,16 +29,19 @@ public class Startup : MonoBehaviour
     // called first
     private HashSet<GameObject> roads = new HashSet<GameObject>();
     private HashSet<GameObject> crossroads = new HashSet<GameObject>();
+    private HashSet<GameObject> buildings = new HashSet<GameObject>();
+
 
     private Random random = new Random();
 
 
     void OnEnable()
     {
-        for(int i = 0; i < 11; i++)
-        {
-            roads.Add(Resources.Load("road"+ i.ToString()) as GameObject);
-        }
+        loadAssets(11, "road",ref roads);
+        loadAssets(3, "crossroad", ref crossroads);
+        loadAssets(9, "building11", ref buildings);
+
+
         for (int i = 0; i < 3; i++)
         {
             crossroads.Add(Resources.Load("crossroad" + i.ToString()) as GameObject);
@@ -81,6 +74,14 @@ public class Startup : MonoBehaviour
         Debug.Log("StartupDone");
     }
 
+    private void loadAssets(int amount, string assetName, ref HashSet<GameObject> collection)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            collection.Add(Resources.Load(assetName + i.ToString()) as GameObject);
+        }
+    }
+
     private void fillMap(ref GameObject[,] gameObjects, int i, int j, ref GameObject gameObject)
     {
         for (int x = 0; x < gameObject.GetComponent<SizeScript>().sizeX; x++)
@@ -99,7 +100,6 @@ public class Startup : MonoBehaviour
         addCornerRoads(ref array);
         addSideRoads(ref array);
         fillRest(ref array);
-        //makeCrossroads(ref array);
     }
 
     private void addSideRoads(ref MyObject[,] array)
@@ -214,26 +214,7 @@ public class Startup : MonoBehaviour
 
     private MyObject pickFromSmall(int buildingNumber)
     {
-        if(buildingNumber == 0)
-            return new MyObject(buildinga);
-        if (buildingNumber == 1)
-            return new MyObject(buildingb);
-        if (buildingNumber == 2)
-            return new MyObject(buildingc);
-        if (buildingNumber == 3)
-            return new MyObject(buildingd);
-        if (buildingNumber == 4)
-            return new MyObject(buildinge);
-        if (buildingNumber == 5)
-            return new MyObject(buildingf);
-        if (buildingNumber == 6)
-            return new MyObject(buildingg);
-        if (buildingNumber == 7)
-            return new MyObject(buildingh);
-        if (buildingNumber == 8)
-            return new MyObject(buildingi);
-        return new MyObject(buildingc);
-
+        return new MyObject(buildings.ElementAt(random.Next(buildings.Count)),random.Next(0,5)*90);
     }
 
     private MyObject pickFromWide()
@@ -243,10 +224,10 @@ public class Startup : MonoBehaviour
     private MyObject pickFromAll(int buildingNumber)
     {
         if (buildingNumber == 0)
-            return new MyObject(bigBuilding, 2, 2);
+            return new MyObject(bigBuilding, 2, 2, random.Next(0, 5) * 90);
         if (buildingNumber == 1)
-            return new MyObject(bigBuilding2, 2, 2);
-        return new MyObject(bigBuilding2, 2, 2);
+            return new MyObject(bigBuilding2, 2, 2, random.Next(0, 5) * 90);
+        return new MyObject(bigBuilding2, 2, 2, random.Next(0, 5) * 90);
 
     }
 
