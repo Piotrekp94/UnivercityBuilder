@@ -15,6 +15,8 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private SizeScript sizeScript;
     private ManagerStatistic manager;
     public StatsPanelScript statsPanel;
+    public HelperPanelScript helperPanel;
+
 
     void Start()
     {
@@ -47,11 +49,14 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         statsPanel.toggle();
+        helperPanel.toggle();
         statsPanel.setString("Cost: " + sizeScript.prize.ToString() + "\n" + "Maintenance: " + sizeScript.maintenanceCost.ToString());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         statsPanel.toggle();
+        helperPanel.toggle();
+
     }
 }

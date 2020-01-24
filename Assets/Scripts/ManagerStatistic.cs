@@ -38,7 +38,7 @@ public class ManagerStatistic : MonoBehaviour
     }
     public void updateMoneyPerSecond(int amount)
     {
-        moneyPerSecond += amount;
+        moneyPerSecond = amount;
     }
 
 }

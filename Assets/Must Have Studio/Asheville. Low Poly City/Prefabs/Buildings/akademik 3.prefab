@@ -111,7 +111,9 @@ MonoBehaviour:
   y: 0
   isOwned: 0
   prize: 80000
-  maintenanceCost: 10
+  maintenanceCost: 150
   red: 255
   green: 255
   blue: 255
+  range: 2
+  power: 3

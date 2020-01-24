@@ -70,7 +70,7 @@ public class CastingToObject : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             clearSelected();
-
+            mapToObjects.clear();
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -89,6 +89,7 @@ public class CastingToObject : MonoBehaviour
         currentY = 999;
         currentX = 999;
         clearSelected();
+        mapToObjects.clear();
     }
 
     private void markClickedObject(ref RaycastHit hit)
@@ -99,11 +100,12 @@ public class CastingToObject : MonoBehaviour
 
         color = selectedObject.GetComponent<Renderer>().material.color;
         selectedObject.GetComponent<Renderer>().material.color = new Color32((byte)red, (byte)green, (byte)blue, 255);
+        var sizeScript = selectedObject.GetComponent<SizeScript>();
+        mapToObjects.markAtDistance(sizeScript.x, sizeScript.y, sizeScript.range); 
+
         Debug.Log("You selected the " + so); // ensure you picked right object
-        Debug.Log("Size " + selectedObject.GetComponent<SizeScript>().sizeX); // ensure you picked right object
 
-        Debug.Log("X: " + hit.transform.gameObject.transform.position.x + ", Y:" + hit.transform.gameObject.transform.position.y + ", Z: " + hit.transform.gameObject.transform.position.z); // ensure you picked right object
-
+        
     }
     private void clearSelected()
     {

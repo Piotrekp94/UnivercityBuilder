@@ -181,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Students: 1000
-  Money: 25000
+  Money: 50000000
   maxStudnetCup: 1000
-  moneyPerSecond: 10
+  moneyPerSecond: 100
 --- !u!114 &933927641
 MonoBehaviour:
   m_ObjectHideFlags: 0

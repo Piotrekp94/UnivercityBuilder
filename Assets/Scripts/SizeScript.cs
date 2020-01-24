@@ -16,4 +16,6 @@ public class SizeScript : MonoBehaviour
     public int red = 255;
     public int green = 255;
     public int blue = 255;
+    public int range = 0;
+    public int power = 0;
 }

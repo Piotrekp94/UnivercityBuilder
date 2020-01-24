@@ -66,6 +66,10 @@ public class MapToObjects : MonoBehaviour
         }
         tempObject = null;
         prefab = null;
+        var isActiveFlag = FindObjectOfType<IsActiveFlagScript>();
+        toggledView = false;
+        isActiveFlag.toggle(toggledView);
+
     }
 
     public GameObject createObject(GameObject prefab, int x, int y, int sizeX, int sizeY, int v)
@@ -89,8 +93,8 @@ public class MapToObjects : MonoBehaviour
             return;
         }
         BuilderScript.isBuildingMode = false;
-        stats.buy(prefabPrize);
-        stats.updateMoneyPerSecond(prefab.GetComponent<SizeScript>().maintenanceCost * -1);
+
+
         isGreen = false;
         if (tempObject != null)
         {
@@ -101,8 +105,58 @@ public class MapToObjects : MonoBehaviour
         newObject.GetComponent<SizeScript>().isOwned = true;
         mapOfObjects[currentX, currentY] = newObject;
         prefab = null;
+        stats.buy(prefabPrize);
+        stats.updateMoneyPerSecond(countIncome());
 
+    }
 
+    private int countIncome()
+    {
+        double income = 100;
+        for (int x = 0; x < sx; x++)
+        {
+            for (int y = 0; y < sy; y++)
+            {
+                if (mapOfObjects[x, y].transform.name.StartsWith("department"))
+                {
+                    income += getIncomeFromDepartment(x, y) * mapOfObjects[x, y].GetComponent<SizeScript>().power * 10;
+                }   
+            }
+        }
+        Debug.Log("Incom before maintenance: " + income.ToString());
+        for (int x = 0; x < sx; x++)
+        {
+            for (int y = 0; y < sy; y++)
+            {
+                if (mapOfObjects[x,y].GetComponent<SizeScript>().isOwned)
+                {
+                    income = income - mapOfObjects[x, y].GetComponent<SizeScript>().maintenanceCost;
+                }
+            }
+        }
+        Debug.Log("Final income : " + income.ToString());
+
+        return (int)income;
+    }
+
+    private double getIncomeFromDepartment(int i, int j)
+    {
+        double power = 0.01;
+        for (int x = 0; x < sx; x++)
+        {
+            for (int y = 0; y < sy; y++)
+            {
+                if (mapOfObjects[x, y].transform.name.StartsWith("akademik"))
+                {
+                    var dormScript = mapOfObjects[x, y].GetComponent<SizeScript>();
+                    if ((Math.Abs(dormScript.x - i) + Math.Abs(dormScript.y - j)) <= dormScript.range)
+                    {
+                        power += dormScript.power;
+                    }
+                }
+            }
+        }
+        return power;
     }
 
     private bool isPlaceTaken(int x, int y, GameObject prefab)
@@ -129,20 +183,13 @@ public class MapToObjects : MonoBehaviour
     }
     public void toggleView()
     {
+        var isActiveFlag = FindObjectOfType<IsActiveFlagScript>();
+
         if (toggledView)
         {
-            for (int i = 0; i < sx; i++)
-            {
-                for (int j = 0; j < sy; j++)
-                {
-                    var building = mapOfObjects[i, j];
-                    var buildingScript = building.GetComponent<SizeScript>();
-                    if (building.name.StartsWith("road") || building.name.StartsWith("cross"))
-                        continue;
-                    building.GetComponent<Renderer>().material.color = new Color32((byte)buildingScript.red, (byte)buildingScript.green, (byte)buildingScript.blue, 255);
-                }
-            }
+            clear();
             toggledView = !toggledView;
+            isActiveFlag.toggle(toggledView);
 
         }
         else
@@ -167,6 +214,39 @@ public class MapToObjects : MonoBehaviour
                 }
             }
             toggledView = !toggledView;
+            isActiveFlag.toggle(toggledView);
+        }
+    }
+    public void markAtDistance(int x, int y, int range)
+    {
+        var yellow = new Color32((byte)223, (byte)186, (byte)54, 255);
+
+        for (int i = 0; i < sx; i++)
+        {
+            for (int j = 0; j < sy; j++)
+            {
+                if (Math.Abs(i - x) + Math.Abs(j - y) <= range)
+                {
+                    var building = mapOfObjects[i, j];
+                    if (building.name.StartsWith("road") || building.name.StartsWith("cross"))
+                        continue;
+                    building.GetComponent<Renderer>().material.color = yellow;
+                }
+            }
+        }
+    }
+    public void clear()
+    {
+        for (int i = 0; i < sx; i++)
+        {
+            for (int j = 0; j < sy; j++)
+            {
+                var building = mapOfObjects[i, j];
+                var buildingScript = building.GetComponent<SizeScript>();
+                if (building.name.StartsWith("road") || building.name.StartsWith("cross"))
+                    continue;
+                building.GetComponent<Renderer>().material.color = new Color32((byte)buildingScript.red, (byte)buildingScript.green, (byte)buildingScript.blue, 255);
+            }
         }
     }
 }
