@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 9169408865645223749, guid: da1a4831d740ac04e9d025b04a1a4026,
         type: 3}
       propertyPath: m_Name
-      value: Cube (1)
+      value: blankg
       objectReference: {fileID: 0}
     - target: {fileID: 4212182054122512578, guid: da1a4831d740ac04e9d025b04a1a4026,
         type: 3}
@@ -66,6 +66,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -795277907634810648, guid: da1a4831d740ac04e9d025b04a1a4026,
+        type: 3}
+      propertyPath: red
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -795277907634810648, guid: da1a4831d740ac04e9d025b04a1a4026,
+        type: 3}
+      propertyPath: blue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -795277907634810648, guid: da1a4831d740ac04e9d025b04a1a4026,
+        type: 3}
+      propertyPath: green
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 7527159908109556914, guid: da1a4831d740ac04e9d025b04a1a4026,
         type: 3}

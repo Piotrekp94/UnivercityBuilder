@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class updateMoneyValue : MonoBehaviour
+public class updateMoneyIncomeValue : MonoBehaviour
 {
     Text moneyText;
     // Start is called before the first frame update
@@ -15,6 +15,6 @@ public class updateMoneyValue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyText.text = ManagerStatistic.Instance.Money.ToString();
+        moneyText.text = ManagerStatistic.Instance.moneyPerSecond.ToString();
     }
 }

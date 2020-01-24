@@ -11,4 +11,9 @@ public class SizeScript : MonoBehaviour
     public int x;
     public int y;
     public bool isOwned = false;
+    public int prize = 1000;
+    public int maintenanceCost = 10;
+    public int red = 255;
+    public int green = 255;
+    public int blue = 255;
 }

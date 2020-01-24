@@ -15,6 +15,6 @@ public class updateStudentsValue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        studentsText.text = PersistentUIManager.Instance.Students.ToString();
+        studentsText.text = ManagerStatistic.Instance.Students.ToString();
     }
 }

@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2487723508068532700}
   - component: {fileID: 2487723508067533596}
   - component: {fileID: 6730657967050737529}
+  - component: {fileID: -6773178370984110914}
   m_Layer: 0
-  m_Name: roadD
+  m_Name: road0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +99,34 @@ MonoBehaviour:
   sizeY: 1
   x: 0
   y: 0
+  isOwned: 0
+  prize: 1000
+  maintenanceCost: 10
+  red: 255
+  green: 255
+  blue: 255
+--- !u!114 &-6773178370984110914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2487723508069801436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9955525faf52841a74c0b5639b87f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 1
+  sizeY: 1
+  x: 0
+  y: 0
+  isOwned: 0
+  prize: 1000
+  maintenanceCost: 10
+  red: 255
+  green: 255
+  blue: 255
 --- !u!1001 &225846762598157219
 PrefabInstance:
   m_ObjectHideFlags: 0

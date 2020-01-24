@@ -107,3 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeX: 1
   sizeY: 1
+  x: 0
+  y: 0
+  isOwned: 1
+  prize: 25000
+  maintenanceCost: 10

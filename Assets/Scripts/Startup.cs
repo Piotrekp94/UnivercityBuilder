@@ -8,11 +8,7 @@ using Random = System.Random;
 
 public class Startup : MonoBehaviour
 {
-    public GameObject tCrossRoad;
     public GameObject road;
-    public GameObject widerBuilding;
-    public GameObject bigBuilding;
-    public GameObject bigBuilding2;
     public GameObject empty;
     public GameObject univercityCenter;
 
@@ -30,6 +26,8 @@ public class Startup : MonoBehaviour
     private HashSet<GameObject> roads = new HashSet<GameObject>();
     private HashSet<GameObject> crossroads = new HashSet<GameObject>();
     private HashSet<GameObject> buildings = new HashSet<GameObject>();
+    private HashSet<GameObject> bigBuildings = new HashSet<GameObject>();
+
 
 
     private Random random = new Random();
@@ -39,7 +37,8 @@ public class Startup : MonoBehaviour
     {
         loadAssets(11, "road",ref roads);
         loadAssets(3, "crossroad", ref crossroads);
-        loadAssets(9, "building11", ref buildings);
+        loadAssets(13, "building11", ref buildings);
+        loadAssets(3, "building22", ref bigBuildings);
 
 
         for (int i = 0; i < 3; i++)
@@ -182,24 +181,18 @@ public class Startup : MonoBehaviour
                 if (array[i, j] == null)
                 {
 
-                    if (random.Next(0, 2) == 0 || (i < univercityStartingPointX + univercityStartingSize && i > univercityStartingPointX) && (j < univercityStartingPointX + univercityStartingSize && j > univercityStartingPointX))
+                    if (random.Next(0, 2) != 0 || (i < univercityStartingPointX + univercityStartingSize && i > univercityStartingPointX) && (j < univercityStartingPointX + univercityStartingSize && j > univercityStartingPointX))
                     {
                         array[i, j] = new MyObject(empty); ;
                     }
                     else
-                    if (random.Next(0, 15) == 0 && isPlaceBig(ref array[i, j + 1], ref array[i + 1, j], ref array[i + 1, j + 1]))
+                    if (random.Next(0, 18) == 0 && isPlaceBig(ref array[i, j + 1], ref array[i + 1, j], ref array[i + 1, j + 1]))
                     {
                         MyObject myObject = pickFromAll(random.Next(0,2));
                         array[i, j] = myObject;
                         array[i + 1, j] = myObject;
                         array[i, j + 1] = myObject;
                         array[i + 1, j + 1] = myObject;
-                    }
-                    else if (random.Next(0, 15) == 0 && isPlaceWide(ref array[i + 1, j]))
-                    {
-                        MyObject myObject = pickFromWide();
-                        array[i, j] = myObject;
-                        array[i + 1, j] = myObject;
                     }
                     else
                     {
@@ -217,25 +210,15 @@ public class Startup : MonoBehaviour
         return new MyObject(buildings.ElementAt(random.Next(buildings.Count)),random.Next(0,5)*90);
     }
 
-    private MyObject pickFromWide()
-    {
-        return new MyObject(widerBuilding, 2, 1);
-    }
     private MyObject pickFromAll(int buildingNumber)
     {
         if (buildingNumber == 0)
-            return new MyObject(bigBuilding, 2, 2, random.Next(0, 5) * 90);
+            return new MyObject(bigBuildings.ElementAt(random.Next(bigBuildings.Count)), 2, 2, random.Next(0, 5) * 90);
         if (buildingNumber == 1)
-            return new MyObject(bigBuilding2, 2, 2, random.Next(0, 5) * 90);
-        return new MyObject(bigBuilding2, 2, 2, random.Next(0, 5) * 90);
+            return new MyObject(bigBuildings.ElementAt(random.Next(bigBuildings.Count)), 2, 2, random.Next(0, 5) * 90);
+        return new MyObject(bigBuildings.ElementAt(random.Next(bigBuildings.Count)), 2, 2, random.Next(0, 5) * 90);
 
     }
-
-    private bool isPlaceWide(ref MyObject myObject)
-    {
-        return myObject == null;
-    }
-
 
     private bool isPlaceBig(ref MyObject myObject, ref MyObject myObject1, ref MyObject myObject2)
     {

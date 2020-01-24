@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1618870290503357156}
   - component: {fileID: 6059261129031790886}
   m_Layer: 0
-  m_Name: geo_buildigns_house_1
+  m_Name: akademik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,3 +109,5 @@ MonoBehaviour:
   sizeY: 1
   x: 0
   y: 0
+  isOwned: 0
+  prize: 5000

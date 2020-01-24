@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,8 +19,13 @@ public class CastingToObject : MonoBehaviour
 
     private int rotation = 0;
     private int oldRotation = 0;
+    private MapToObjects mapToObjects;
     Color color;
     // Update is called once per frame
+    private void Start()
+    {
+        mapToObjects = FindObjectOfType<MapToObjects>();
+    }
     void Update()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -30,6 +36,11 @@ public class CastingToObject : MonoBehaviour
         {
             rotation += 90;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            softReset();
+            mapToObjects.softReset();
+        }
         if (BuilderScript.isBuildingMode)
         {
 
@@ -37,22 +48,20 @@ public class CastingToObject : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, range))
             {
-                var mapToObject = FindObjectOfType<MapToObjects>();
                 GameObject selectedObject = GameObject.Find(hit.transform.gameObject.name);
                 if (currentX != selectedObject.GetComponent<SizeScript>().x || currentY != selectedObject.GetComponent<SizeScript>().y || rotation != oldRotation)
                 {
                     currentX = selectedObject.GetComponent<SizeScript>().x;
                     currentY = selectedObject.GetComponent<SizeScript>().y;
-                    mapToObject.paintTempObject(currentX, currentY, BuilderScript.buildingObject, rotation);
+                    mapToObjects.paintTempObject(currentX, currentY, BuilderScript.buildingObject, rotation);
                     oldRotation = rotation;
                 }
                 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (mapToObject.isGreen)
+                    if (mapToObjects.isGreen)
                     {
-                        BuilderScript.isBuildingMode = false;
-                        mapToObject.constructPaintedObject(currentX, currentY, BuilderScript.buildingObject, rotation);
+                        mapToObjects.constructPaintedObject(currentX, currentY, rotation);
                         rotation = 0;
                     }
                 }
@@ -71,6 +80,17 @@ public class CastingToObject : MonoBehaviour
             }
         }
     }
+
+    private void softReset()
+    {
+        rotation = 0;
+        oldRotation = 0;
+        BuilderScript.isBuildingMode = false;
+        currentY = 999;
+        currentX = 999;
+        clearSelected();
+    }
+
     private void markClickedObject(ref RaycastHit hit)
     {
         clearSelected();
