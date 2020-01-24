@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -776189005878728067}
   - component: {fileID: -7816517657711587233}
   m_Layer: 0
-  m_Name: geo_buildigns_house_2
+  m_Name: building118
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,3 +109,9 @@ MonoBehaviour:
   sizeY: 1
   x: 0
   y: 0
+  isOwned: 0
+  prize: 1000
+  maintenanceCost: 10
+  red: 255
+  green: 255
+  blue: 255

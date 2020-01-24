@@ -110,7 +110,7 @@ MonoBehaviour:
   x: 0
   y: 0
   isOwned: 0
-  prize: 5000
+  prize: 15000
   maintenanceCost: 10
   red: 255
   green: 255
