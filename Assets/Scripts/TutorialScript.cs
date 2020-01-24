@@ -5,6 +5,7 @@ using UnityEngine;
 public class TutorialScript : MonoBehaviour
 {
     bool tutorialDormitory = false;
+
     bool tutorialDepartment = false;
 
     public GameObject TutorialDormPanel;
@@ -12,7 +13,7 @@ public class TutorialScript : MonoBehaviour
 
     public void dormActive()
     {
-        if(! tutorialDormitory)
+        if(!tutorialDormitory)
         {
             tutorialDormitory = true;
             TutorialDormPanel.SetActive(true);
