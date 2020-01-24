@@ -14,11 +14,9 @@ public class StatsPanelScript : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void toggle()
+    public void toggle(bool state)
     {
-        isToggled = !isToggled;
-        this.gameObject.SetActive(isToggled);
-
+        this.gameObject.SetActive(state);
     }
     public void setString(string message)
     {

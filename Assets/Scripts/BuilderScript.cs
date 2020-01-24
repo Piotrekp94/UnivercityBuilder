@@ -8,6 +8,8 @@ public class BuilderScript : MonoBehaviour
     static public bool wasInterfaceClicked = false;
     static public bool isBuildingMode = false;
     static public GameObject buildingObject = null;
+    static public bool activeSelling = false;
+    public GameObject g;
 
     // Update is called once per frame
 
@@ -16,5 +18,22 @@ public class BuilderScript : MonoBehaviour
         buildingObject = go;
         isBuildingMode = true;
         wasInterfaceClicked = true;
+        activeSelling = false;
+        //g.GetComponent<IsActiveDolarScript>().toggle(false);
+
+    }
+    public void cancelBuildingObject()
+    {
+        buildingObject = null;
+        isBuildingMode = false;
+        wasInterfaceClicked = false;
+    }
+
+    public void setActiveSelling()
+    {
+        cancelBuildingObject();
+        activeSelling = true;
+        //g.GetComponent<IsActiveDolarScript>().toggle(true);
+
     }
 }
