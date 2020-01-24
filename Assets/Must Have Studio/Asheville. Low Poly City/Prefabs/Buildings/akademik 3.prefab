@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1618870290503357156}
   - component: {fileID: 6059261129031790886}
   m_Layer: 0
-  m_Name: akademik
+  m_Name: akademik 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3285427299413871936}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -102.5, y: 0, z: -36.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3fedc82ff3761ec4eaea7648bb5cd2b4, type: 2}
+  - {fileID: 2100000, guid: 09a2b32aaae1bb044ab7669423e0523f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

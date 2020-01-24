@@ -112,3 +112,6 @@ MonoBehaviour:
   isOwned: 0
   prize: 10000
   maintenanceCost: 65
+  red: 255
+  green: 255
+  blue: 255

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1618870290503357156}
   - component: {fileID: 6059261129031790886}
   m_Layer: 0
-  m_Name: akademik
+  m_Name: akademik 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3fedc82ff3761ec4eaea7648bb5cd2b4, type: 2}
+  - {fileID: 2100000, guid: 7a92004572b189f46bf9b545c424f8b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

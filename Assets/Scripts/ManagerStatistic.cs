@@ -13,7 +13,7 @@ public class ManagerStatistic : MonoBehaviour
 
     public void Start()
     {
-        InvokeRepeating("updateMoney", 1, 1);
+        InvokeRepeating("updateMoney", 10, 10);
     }
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class ManagerStatistic : MonoBehaviour
     }
     private void updateMoney()
     {
-        Money += moneyPerSecond;
+        Money += moneyPerSecond * 10;
     }
     public void updateMoneyPerSecond(int amount)
     {
